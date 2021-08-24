@@ -9,7 +9,9 @@ import java.util.*;
 
 import byCoders.desafio.models.TipoTransacao;
 import byCoders.desafio.models.Transacao;
+import byCoders.desafio.models.dto.TransacaoDto;
 import byCoders.desafio.repositories.TipoTransacaoRepository;
+import byCoders.desafio.repositories.TransacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,9 @@ public class TransacaoService {
 
     @Autowired
     private TipoTransacaoRepository tipoTransacaoRepository;
+
+    @Autowired
+    private TransacaoRepository transacaoRepository;
 
     public List<Transacao> leituraCNAB(String nomeArquivo){
 
@@ -92,5 +97,21 @@ public class TransacaoService {
 
         return transacaoList;
 
+    }
+
+    public List<TransacaoDto> convercaoTransacaoDto(){
+
+        //Método criado para converter todos os objetos trasacao em
+        //trasacao Dto
+
+        List<Transacao> transacaoList = transacaoRepository.findAll();
+
+        List<TransacaoDto> transacoes = new ArrayList<>();
+
+        for (Transacao t : transacaoList){
+            transacoes.add(new TransacaoDto(t, t.getTipoTransacao()));
+        }
+
+        return transacoes;
     }
 }

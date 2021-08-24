@@ -2,6 +2,7 @@ package byCoders.desafio.controllers;
 
 
 import byCoders.desafio.models.Transacao;
+import byCoders.desafio.models.dto.TransacaoDto;
 import byCoders.desafio.repositories.TransacaoRepository;
 import byCoders.desafio.services.TransacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,10 @@ import java.nio.file.Paths;
 public class TransacaoController {
 
     @Autowired
-    TransacaoRepository transacaoRepository;
+    TransacaoService transacaoService;
 
     @Autowired
-    TransacaoService transacaoService;
+    TransacaoRepository transacaoRepository;
 
     @PostMapping("/upload")
     public ResponseEntity<?> importarTransacao(@RequestParam("arquivo") MultipartFile arquivoRecebido) throws IOException {
@@ -65,5 +66,18 @@ public class TransacaoController {
         }
 
     }
+
+    @GetMapping
+    public ResponseEntity<List<TransacaoDto>> listagemTransacoes(){
+
+        List<TransacaoDto> transacaoDtos = transacaoService.convercaoTransacaoDto();
+
+        if (transacaoDtos.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(transacaoDtos);
+        }
+    }
+
 
 }
