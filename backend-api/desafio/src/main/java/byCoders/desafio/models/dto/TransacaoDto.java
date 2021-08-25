@@ -1,22 +1,20 @@
 package byCoders.desafio.models.dto;
 
-import byCoders.desafio.models.TipoTransacao;
+import byCoders.desafio.models.Loja;
 import byCoders.desafio.models.Transacao;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class TransacaoDto {
 
-    private Integer tipo;
+    private Integer id;
 
     private LocalDate data;
 
-    private Double valor;
+    private String valor;
 
     private String cpfBeneficiario;
-
-    private String cartao;
 
     private LocalTime hora;
 
@@ -24,49 +22,45 @@ public class TransacaoDto {
 
     private String nomeLoja;
 
+    private String saldoLoja;
+
     private String descricaoTipo;
 
-    public TransacaoDto(Transacao transacao, TipoTransacao tipoTransacao) {
-        this.tipo = tipoTransacao.getIdTipoTransacao();
+    public TransacaoDto(Transacao transacao, Loja loja) {
+        this.id = transacao.getIdTransacao();
         this.data = LocalDate.of(
                 Integer.parseInt(transacao.getDataTransacao().substring(0,4)),
                 Integer.parseInt(transacao.getDataTransacao().substring(4,6)),
                 Integer.parseInt(transacao.getDataTransacao().substring(6,8))
         );
-        this.valor = transacao.getValorTransacao();
+        this.valor = String.format("%.2f",transacao.getValorTransacao());
         this.cpfBeneficiario = transacao.getCpfTransacao().toString();
-        this.cartao = transacao.getCartaoTransacao();
         this.hora = LocalTime.of(
                 Integer.parseInt(transacao.getHoraTransacao().substring(0,2)),
                 Integer.parseInt(transacao.getHoraTransacao().substring(2,4)),
                 Integer.parseInt(transacao.getHoraTransacao().substring(4,6))
         );
-        this.donoLoja = transacao.getDonoLoja();
-        this.nomeLoja = transacao.getNomeLoja();
-        this.descricaoTipo = tipoTransacao.getDescricao();
+        this.donoLoja = loja.getDonoLoja();
+        this.nomeLoja = loja.getNomeLoja();
+        this.saldoLoja = String.format("%.2f",loja.getSaldoLoja());
+        this.descricaoTipo = transacao.getDescricaoTransacao();
     }
 
-    public Integer getTipo() {
-        return tipo;
-    }
 
-    public void setTipo(Integer tipo) {
-        this.tipo = tipo;
-    }
-
-    public LocalDate getData() {
-        return data;
+    public String getData() {
+        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        return data.format(formatters);
     }
 
     public void setData(LocalDate data) {
         this.data = data;
     }
 
-    public Double getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
@@ -76,14 +70,6 @@ public class TransacaoDto {
 
     public void setCpfBeneficiario(String cpfBeneficiario) {
         this.cpfBeneficiario = cpfBeneficiario;
-    }
-
-    public String getCartao() {
-        return cartao;
-    }
-
-    public void setCartao(String cartao) {
-        this.cartao = cartao;
     }
 
     public LocalTime getHora() {
@@ -116,5 +102,21 @@ public class TransacaoDto {
 
     public void setDescricaoTipo(String descricaoTipo) {
         this.descricaoTipo = descricaoTipo;
+    }
+
+    public String getSaldoLoja() {
+        return saldoLoja;
+    }
+
+    public void setSaldoLoja(String saldoLoja) {
+        this.saldoLoja = saldoLoja;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
