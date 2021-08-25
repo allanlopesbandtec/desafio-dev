@@ -3,6 +3,7 @@ package byCoders.desafio.controllers;
 
 import byCoders.desafio.models.Transacao;
 import byCoders.desafio.models.dto.TransacaoDto;
+import byCoders.desafio.models.dto.TransacaoLojaDto;
 import byCoders.desafio.repositories.TransacaoRepository;
 import byCoders.desafio.services.TransacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,7 @@ public class TransacaoController {
             System.out.println("Recebendo um arquivo do tipo: " + arquivoRecebido.getContentType());
 
             byte[]  conteudo = arquivoRecebido.getBytes();
+
             //Vetor de bytes criado para reber o arquivo
 
             Path path = Paths.get(arquivoRecebido.getOriginalFilename());
@@ -55,14 +57,8 @@ public class TransacaoController {
 
             Files.write(path, conteudo);
 
-            listaTransacoes = transacaoService.leituraCNAB(arquivoRecebido.getOriginalFilename());
             //Acionando método da TransacaoService para ler o arquivo e retornar um List de transacoes.
-
-            for(Transacao t : listaTransacoes){
-                transacaoRepository.save(t);
-            }
-
-            return ResponseEntity.created(null).build();
+            return transacaoService.cadastrarLojas( transacaoService.leituraCNAB(arquivoRecebido.getOriginalFilename()));
         }
 
     }
@@ -70,13 +66,27 @@ public class TransacaoController {
     @GetMapping
     public ResponseEntity<List<TransacaoDto>> listagemTransacoes(){
 
-        List<TransacaoDto> transacaoDtos = transacaoService.convercaoTransacaoDto();
+        List<TransacaoDto> transacaoDtos = transacaoService.convercaoTransacaoDto(transacaoRepository.findAll());
 
         if (transacaoDtos.isEmpty()){
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.ok(transacaoDtos);
         }
+    }
+
+    @GetMapping("/{idLoja}")
+    public ResponseEntity<TransacaoLojaDto> listagemPorLoja(@PathVariable Integer idLoja){
+
+        TransacaoLojaDto transacaoDto = transacaoService.convercaoTransacaoLojaDto(
+                transacaoRepository.findTransacaoByLoja_IdLoja(idLoja));
+
+        if (transacaoDto.getLojasList().isEmpty()){
+            return ResponseEntity.notFound().build();
+        }else {
+            return ResponseEntity.ok(transacaoDto);
+        }
+
     }
 
 
