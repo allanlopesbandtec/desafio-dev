@@ -1,0 +1,17 @@
+ul {
+    list-style-type: none;
+}
+
+.card {
+    margin-bottom: 5px;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.397);
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 180px;
+    overflow: hidden;
+}
+
+.card span {
+    color: rgb(35, 113, 187);
+}
