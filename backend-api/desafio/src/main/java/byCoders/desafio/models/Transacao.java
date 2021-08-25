@@ -20,23 +20,24 @@ public class Transacao {
 
     private String horaTransacao;
 
+    private String natureza;
+
+    private String descricaoTransacao;
+
     @ManyToOne
-    private TipoTransacao tipoTransacao;
+    @JoinColumn(name = "fk_loja")
+    private Loja loja;
 
-    private String nomeLoja;
-
-    private String donoLoja;
-
-    public Transacao(Integer idTransacao, String dataTransacao, Double valorTransacao, Long cpfTransacao, String cartaoTransacao, String horaTransacao, TipoTransacao tipoTransacao, String nomeLoja, String donoLoja) {
+    public Transacao(Integer idTransacao, String dataTransacao, Double valorTransacao, Long cpfTransacao, String cartaoTransacao, String horaTransacao, String natureza, String descricaoTransacao, Loja loja) {
         this.idTransacao = idTransacao;
         this.dataTransacao = dataTransacao;
         this.valorTransacao = valorTransacao;
         this.cpfTransacao = cpfTransacao;
         this.cartaoTransacao = cartaoTransacao;
         this.horaTransacao = horaTransacao;
-        this.tipoTransacao = tipoTransacao;
-        this.nomeLoja = nomeLoja;
-        this.donoLoja = donoLoja;
+        this.natureza = natureza;
+        this.descricaoTransacao = descricaoTransacao;
+        this.loja = loja;
     }
 
     public Transacao() {
@@ -90,27 +91,27 @@ public class Transacao {
         this.horaTransacao = horaTransacao;
     }
 
-    public TipoTransacao getTipoTransacao() {
-        return tipoTransacao;
+    public Loja getLoja() {
+        return loja;
     }
 
-    public void setTipoTransacao(TipoTransacao tipoTransacao) {
-        this.tipoTransacao = tipoTransacao;
+    public void setLoja(Loja loja) {
+        this.loja = loja;
     }
 
-    public String getNomeLoja() {
-        return nomeLoja;
+    public String getNatureza() {
+        return natureza;
     }
 
-    public void setNomeLoja(String nomeLoja) {
-        this.nomeLoja = nomeLoja;
+    public void setNatureza(String natureza) {
+        this.natureza = natureza;
     }
 
-    public String getDonoLoja() {
-        return donoLoja;
+    public String getDescricaoTransacao() {
+        return descricaoTransacao;
     }
 
-    public void setDonoLoja(String donoLoja) {
-        this.donoLoja = donoLoja;
+    public void setDescricaoTransacao(String descricaoTransacao) {
+        this.descricaoTransacao = descricaoTransacao;
     }
 }
