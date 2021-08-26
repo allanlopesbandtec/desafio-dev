@@ -22,7 +22,7 @@ function ListagemLojas(){
             .then((response) => {
 
                 setSaldo(response.data.saldoLoja)
-                setLojaHistorico(response.data.lojasList)
+                setLojaHistorico(response.data.transacaoDtos)
                 setLoja(response.data.nomeLoja)
             });
         } catch (error) {
