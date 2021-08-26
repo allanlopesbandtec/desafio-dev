@@ -2,15 +2,15 @@ package byCoders.desafio.models;
 
 public enum OpcaoTransacao {
 
-    DEBITO("Debito", "Entrada"),
-    BOLETO("Boleto", "Saída"),
-    FINANCIAMENTO("Financiamento", "Saída"),
-    CREDITO("Crédito", "Entrada"),
-    EMPRESTIMO("Recebimento Emprestimo", "Entrada"),
-    VENDAS("Vendas", "Entrada"),
-    TED("Recebimento TED", "Entrada"),
-    DOC("Recebimento DOC", "Entrada"),
-    ALUGUEL("Aluguel", "Saída");
+    DEBITO("DEBITO", "Entrada"),
+    BOLETO("BOLETO", "Saída"),
+    FINANCIAMENTO("FINANCIAMENTO", "Saída"),
+    CREDITO("CRÉDITO", "Entrada"),
+    EMPRESTIMO("RECEBIMENTO Emprestimo", "Entrada"),
+    VENDAS("VENDAS", "Entrada"),
+    TED("RECEBIMENTO TED", "Entrada"),
+    DOC("RECEBIMENTO DOC", "Entrada"),
+    ALUGUEL("ALUGEL", "Saída");
 
     private String descricaoTransacao;
 
