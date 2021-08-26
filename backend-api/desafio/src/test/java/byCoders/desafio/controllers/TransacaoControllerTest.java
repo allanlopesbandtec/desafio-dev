@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.ResponseEntity;
+import java.util.Optional;
 
 
 import java.util.*;
@@ -35,7 +36,7 @@ class TransacaoControllerTest {
     TransacaoService serviceMock;
 
     @Test
-    @DisplayName("listagem deve trazer as transações e retornar status 200")
+    @DisplayName("ListagemTransacoesCenario1 deve trazer as transações e retornar status 200")
     void listagemTransacoesCenario1() {
 
         List<TransacaoDto> transacoesDto
@@ -53,7 +54,7 @@ class TransacaoControllerTest {
     }
 
     @Test
-    @DisplayName("listagem não deve trazer as transações e retornar status 204")
+    @DisplayName("ListagemTransacoesCenario2 não deve trazer as transações e retornar status 204")
     void listagemTransacoesCenario2() {
 
         Mockito.when(
@@ -67,8 +68,8 @@ class TransacaoControllerTest {
         assertEquals(null, resposta.getBody());
     }
 
-    //@Test
-    @DisplayName("listagem deve trazer transações por loja e retornar status 200")
+    @Test
+    @DisplayName("ListagemPorLojaCenario1 deve trazer transações por loja e retornar status 200")
     void listagemPorLojaCenario1() {
 
         int idLoja = 1;
@@ -81,20 +82,19 @@ class TransacaoControllerTest {
 
         ResponseEntity resposta = controller.listagemPorLoja(idLoja);
 
-        assertEquals(404, resposta.getStatusCodeValue());
+        assertEquals(200, resposta.getStatusCodeValue());
         assertEquals(transacaoLojaDto, resposta.getBody());
     }
 
     @Test
-    @DisplayName("listagem não deve trazer transações por loja e retornar status 404")
+    @DisplayName("ListagemPorLojaCenario2 não deve trazer transações por loja e retornar status 404")
     void listagemPorLojaCenario2() {
 
         int idLoja = 1;
 
         Mockito.when(
                 serviceMock.convercaoTransacaoLojaDto(
-                        repositoryMock.findTransacaoByLoja_IdLoja(idLoja)))
-                .thenReturn(new TransacaoLojaDto());
+                        repositoryMock.findAll())).thenReturn(null);
 
         ResponseEntity resposta = controller.listagemPorLoja(idLoja);
 

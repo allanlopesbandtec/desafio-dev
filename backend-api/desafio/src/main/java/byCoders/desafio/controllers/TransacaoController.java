@@ -87,7 +87,7 @@ public class TransacaoController {
             TransacaoLojaDto transacaoDto = transacaoService.convercaoTransacaoLojaDto(
                     transacaoRepository.findTransacaoByLoja_IdLoja(idLoja));
 
-            if (transacaoDto.getTransacaoDtos().isEmpty()){
+            if (transacaoDto == null){
                 return ResponseEntity.notFound().build();
             }else {
                 return ResponseEntity.ok(transacaoDto);
