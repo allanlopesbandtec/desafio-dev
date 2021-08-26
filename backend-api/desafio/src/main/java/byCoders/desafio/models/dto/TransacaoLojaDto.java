@@ -8,12 +8,12 @@ public class TransacaoLojaDto {
 
     private String nomeLoja;
 
-    private List<TransacaoDto> lojasList;
+    private List<TransacaoDto> transacaoDtos;
 
     public TransacaoLojaDto(Double saldo, String nomeLoja, List<TransacaoDto> lojasList) {
         this.saldoLoja = String.format("%.2f", saldo);;
         this.nomeLoja = nomeLoja;
-        this.lojasList = lojasList;
+        this.transacaoDtos = lojasList;
     }
 
     public TransacaoLojaDto() {
@@ -27,12 +27,12 @@ public class TransacaoLojaDto {
         this.saldoLoja = saldoLoja;
     }
 
-    public List<TransacaoDto> getLojasList() {
-        return lojasList;
+    public List<TransacaoDto> getTransacaoDtos() {
+        return transacaoDtos;
     }
 
-    public void setLojasList(List<TransacaoDto> lojasList) {
-        this.lojasList = lojasList;
+    public void setTransacaoDtos(List<TransacaoDto> transacaoDtos) {
+        this.transacaoDtos = transacaoDtos;
     }
 
     public String getNomeLoja() {

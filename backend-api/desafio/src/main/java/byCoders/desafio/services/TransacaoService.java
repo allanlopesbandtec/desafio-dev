@@ -153,7 +153,7 @@ public class TransacaoService {
         return transacoesLojaDto;
     }
 
-    public ResponseEntity<List<TransacaoDto>> cadastrarLojas(List<Transacao> transacoes) {
+    public ResponseEntity<List<Transacao>> cadastrarLojas(List<Transacao> transacoes) {
 
         Loja loja;
 
@@ -200,6 +200,6 @@ public class TransacaoService {
             }
         }
 
-        return ResponseEntity.created(null).body(convercaoTransacaoDto(transacoes));
+        return ResponseEntity.created(null).body(transacoes);
     }
 }
