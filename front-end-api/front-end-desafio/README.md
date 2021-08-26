@@ -1,12 +1,21 @@
-#Front-end desafio bycoders
+# Front-end desafio bycoders !
 
-## Para iniciar a aplicação executar linha de comando:
+#### Linguagens utilizadas
+
+- HTML / CSS / JavaScript
+
+- ReactJs
 
 
+## Para utilizar a aplicação front-end são necessários alguns passos:
 
-### `npm install yarn`
+> Ter o nodeJs instalado em sua máquina versão utilizada: 12.18.4
 
-### `yarn start`
+> `npm install yarn`
+
+> `yarn` (para instalação dos pacotes)
+
+> `yarn start`
 
 - A aplicação iniciára no navegador padrão, com o endereço https://localhost:3000
 
