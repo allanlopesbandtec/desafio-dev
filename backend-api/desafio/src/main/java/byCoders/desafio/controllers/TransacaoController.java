@@ -18,16 +18,21 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/transacoes")
 public class TransacaoController {
 
-    @Autowired
     TransacaoService transacaoService;
 
-    @Autowired
     TransacaoRepository transacaoRepository;
+
+    @Autowired
+    public TransacaoController(TransacaoService transacaoService, TransacaoRepository transacaoRepository) {
+        this.transacaoService = transacaoService;
+        this.transacaoRepository = transacaoRepository;
+    }
 
     @PostMapping("/upload")
     public ResponseEntity<?> importarTransacao(@RequestParam("arquivo") MultipartFile arquivoRecebido) throws IOException {
@@ -50,7 +55,7 @@ public class TransacaoController {
 
             //Vetor de bytes criado para reber o arquivo
 
-            Path path = Paths.get(arquivoRecebido.getOriginalFilename());
+            Path path = Paths.get(Objects.requireNonNull(arquivoRecebido.getOriginalFilename()));
             //Classe path para identificar o caminho e nome do arquivo
 
             System.out.println("Nome do arquivo: " + path.getFileName());
@@ -78,15 +83,18 @@ public class TransacaoController {
     @GetMapping("/{idLoja}")
     public ResponseEntity<TransacaoLojaDto> listagemPorLoja(@PathVariable Integer idLoja){
 
-        TransacaoLojaDto transacaoDto = transacaoService.convercaoTransacaoLojaDto(
-                transacaoRepository.findTransacaoByLoja_IdLoja(idLoja));
+        if (idLoja != null){
+            TransacaoLojaDto transacaoDto = transacaoService.convercaoTransacaoLojaDto(
+                    transacaoRepository.findTransacaoByLoja_IdLoja(idLoja));
 
-        if (transacaoDto.getLojasList().isEmpty()){
-            return ResponseEntity.notFound().build();
+            if (transacaoDto.getTransacaoDtos().isEmpty()){
+                return ResponseEntity.notFound().build();
+            }else {
+                return ResponseEntity.ok(transacaoDto);
+            }
         }else {
-            return ResponseEntity.ok(transacaoDto);
+            return ResponseEntity.notFound().build();
         }
-
     }
 
 
