@@ -17,6 +17,9 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+
+		<!--Jpa e SpringMVC-->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -26,11 +29,16 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+
+		<!--Driver SQL SERVER-->
+
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>mssql-jdbc</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!--Testes-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -43,6 +51,20 @@
 			<artifactId>mockito-core</artifactId>
 			<version>3.11.2</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!--Swagger, docuementação do API-->
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
 		</dependency>
 
 
