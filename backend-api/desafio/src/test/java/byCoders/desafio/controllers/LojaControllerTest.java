@@ -1,4 +1,7 @@
-import static org.junit.jupiter.api.Assertions.*;
+package byCoders.desafio.controllers;
+
 class LojaControllerTest {
-  
+
+
+
 }
