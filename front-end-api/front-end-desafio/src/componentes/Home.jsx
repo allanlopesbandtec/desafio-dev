@@ -3,9 +3,9 @@ import axios from 'axios';
 import Listagens from './listagem/Listagens'
 import Loja from "./lojas/Lojas";
 import LupaAzul from '../assets/img/lupa-azul.png'
-import {useHistory} from "react-router-dom";
-
+import Logo from "../assets/img/logo-bycorders.jfif"
 import '../assets/css/home.css'
+import {useHistory} from "react-router-dom";
 
 function Home(){
 
@@ -89,29 +89,34 @@ function Home(){
 
         <div className="conteudo">
 
-          <nav className="nav">
+        <div className="nav">
+
+          <nav>
 
               <input id="arquivo" onChange={arquivar} multiple ref={filesElement} className="input-arquivar" 
-              type="file" placeholder="Arquivar"/>
+              type="file" placeholder="ARQUIVAR"/>
 
             {transacoes.length > 0 ?
             <>
                 <form onSubmit={handleSubmit}>  
                   <a onClick={filtrarLojas}><img alt="lupaAzul" src={LupaAzul}/></a>
 
-                    <select name="loja" id="loja" onChange={handleChangeLoja}  placeholder="Selecione uma loja">
-                        <option> Selecione uma loja </option>
+                    <select name="loja" id="loja" onChange={handleChangeLoja}>
+                        <option> SELECIONE UMA LOJA</option>
                         <Loja obj={lojas}/>
                     </select>                  
               
                 </form>
             </>
-
             :         
             <>
             </>
             }
           </nav>
+
+          </div>
+
+          <img className="img-logo" src={Logo} alt="by-coders" />
 
           {transacoes.length > 0 ?
 
@@ -125,9 +130,9 @@ function Home(){
           </>
 
           : 
-          
+        
           <>
-
+              
           </>
         }
 

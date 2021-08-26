@@ -15,7 +15,7 @@ function Nav(){
 
             <div>
                 <nav className="nav">
-                    <button className="btn-arquivar" onClick={home}>Home</button>    
+                    <button className="btn-arquivar" onClick={home}>HOME</button>    
                 </nav>
             </div>
     )

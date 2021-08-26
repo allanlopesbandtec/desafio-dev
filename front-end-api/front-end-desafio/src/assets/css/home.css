@@ -1,7 +1,8 @@
 h3 {
-    color: rgb(35, 113, 187);
+    color: #02BE3B;
     text-align: center;
     font-weight: 300;
+    margin-top: 50px;
 }
 
 h2 {
@@ -18,14 +19,15 @@ h2 {
 }
 
 .input-arquivar {
-    width: 300px;
+    width: 400px;
+    text-transform: uppercase;
 }
 
 .btn-arquivar {
     width: 150px;
     color: white;
     padding: 5px;
-    background-color: rgb(46, 170, 73);
+    background-color: #02BE3B;
     border: none;
     cursor: pointer;
     transition: 1.5s;
@@ -37,6 +39,9 @@ h2 {
 }
 
 .nav {
+    /* position: fixed; */
+    background-color: white;
+    width: 100%;
     padding: 10px;
     border-bottom: solid 1px rgba(0, 0, 0, 0.397);
     box-shadow: rgba(0, 0, 0, 0.328);
@@ -54,7 +59,7 @@ form {
     max-height: max-content;
     max-width: max-content;
     text-decoration: none;
-    color: rgb(35, 113, 187);
+    color: #02BE3B;
 }
 
 .nav img {

@@ -13,13 +13,13 @@ function Listagens(props){
                     <>
                         <div className="card" key={transacao.id}>
                             <ul>
-                                <li> <span>Loja: </span>{transacao.nomeLoja}</li>
-                                <li> <span>Dono da loja: </span>{transacao.donoLoja}</li>
-                                <li> <span>Data: </span>{transacao.data}</li>
-                                <li> <span>Hora: </span>{transacao.hora}</li>
-                                <li> <span>Cpf beneficiario: </span>{transacao.cpfBeneficiario}</li>
-                                <li> <span>Valor: </span>{transacao.valor}</li>
-                                <li> <span>Descrição da transação: </span>{transacao.descricaoTipo}</li>
+                                <li> <span>LOJA: </span>{transacao.nomeLoja}</li>
+                                <li> <span>DONO DA LOJA: </span>{transacao.donoLoja}</li>
+                                <li> <span>DATA: </span>{transacao.data}</li>
+                                <li> <span>HORA: </span>{transacao.hora}</li>
+                                <li> <span>CPF BENEFICIÁRIO: </span>{transacao.cpfBeneficiario}</li>
+                                <li> <span>VALOR: </span>{transacao.valor}</li>
+                                <li> <span>DESCRIÇÃO DA TRANSAÇÃO: </span>{transacao.descricaoTipo}</li>
                             </ul>
                         </div>
                     </>

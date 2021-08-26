@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Listagens from './listagem/Listagens'
+import Logo from "../assets/img/logo-bycorders.jfif"
 import Nav from './navegacao/Nav'
 
 import '../assets/css/listagens.css'
@@ -36,21 +37,26 @@ function ListagemLojas(){
     return (  
 
         <div className="conteudo">
+          <Nav/>
 
-                <Nav/>
- 
-                <h3>{loja}</h3> 
-
-                <h2>Saldo: {saldo}</h2>
-
-            <div className="listagem">
-
-                
-
-                <Listagens obj={lojaHistorico}/> 
-            </div>
-
+          <img className="img-logo" src={Logo} alt="by-coders" />
+          
+            {lojaHistorico.length > 0 ? 
+                    <>    
+                        <h3>{loja}</h3> 
+                        <h2>Saldo: {saldo}</h2>
+                        <div className="listagem">
+                            <Listagens obj={lojaHistorico}/> 
+                        </div>
+                    </>
+                :
+                <>
+                </>
+            }
         </div>
+
+
+
     )
 }
 

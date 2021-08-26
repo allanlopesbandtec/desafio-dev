@@ -1,7 +1,6 @@
 import React from "react";
 import Home from "./componentes/Home"
 import ListagemLojas from "./componentes/ListagemLojas"
-
 import {
   BrowserRouter,
   Route
