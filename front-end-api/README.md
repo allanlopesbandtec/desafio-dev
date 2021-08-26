@@ -9,9 +9,9 @@
 
 ## Para utilizar a aplicação front-end são necessários alguns passos:
 
-> Ter o nodeJs instalado em sua máquina versão utilizada: 12.18.4
+> `Ter o NodeJs instalado em sua máquina, versão utilizada: 12.18.4`
 
-> `npm install yarn`
+> `npm install --global yarn`
 
 > `yarn` (para instalação dos pacotes)
 
