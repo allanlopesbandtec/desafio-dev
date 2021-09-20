@@ -38,6 +38,13 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!--Driver H2 DB-->
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+
 		<!--Testes-->
 
 		<dependency>
@@ -72,6 +79,7 @@
 	</dependencies>
 
 	<build>
+		<finalName> desafio </finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

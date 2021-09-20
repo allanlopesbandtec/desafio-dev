@@ -1,23 +1,16 @@
 package byCoders.desafio.controllers;
 
-
-import byCoders.desafio.models.Transacao;
 import byCoders.desafio.models.dto.TransacaoDto;
 import byCoders.desafio.models.dto.TransacaoLojaDto;
 import byCoders.desafio.repositories.TransacaoRepository;
 import byCoders.desafio.services.TransacaoService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.ResponseEntity;
-import java.util.Optional;
-
 
 import java.util.*;
 
@@ -101,4 +94,5 @@ class TransacaoControllerTest {
         assertEquals(404, resposta.getStatusCodeValue());
         assertEquals(null, resposta.getBody());
     }
+
 }
